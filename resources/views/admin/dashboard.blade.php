@@ -76,26 +76,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                          
-                            @foreach($financialData['users'] as $user)
 
-                                <tr>
-                                    <td>{{ $user['username'] }}</td>
-                                    <td>{{ $user['account_balance'] }}</td>
-                                    <td>
-                                        <ul>
-                                            @foreach($user['transactions'] as $transaction)
-                                                <li>{{ $transaction['date'] }}: {{ $transaction['description'] }} ({{ $transaction['amount'] }})</li>
-                                            @endforeach
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <p>Card number: {{ $user['credit_card']['card_number'] }}</p>
-                                        <p>Expire date: {{ $user['credit_card']['expiry_date'] }}</p>
-                                        <p>CVV: {{ $user['credit_card']['cvv'] }}</p>
-                                    </td>
-                                </tr>
-                            @endforeach
+                        @foreach($financialData['users'] as $user)
+
+                            <tr>
+                                <td>{{ $user['username'] }}</td>
+                                <td>{{ $user['account_balance'] }}</td>
+                                <td>
+                                    <ul>
+                                        @foreach($user['transactions'] as $transaction)
+                                            <li>{{ $transaction['date'] }}: {{ $transaction['description'] }} ({{ $transaction['amount'] }})</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                                <td>
+                                    <p>Card number: {{ $user['credit_card']['card_number'] }}</p>
+                                    <p>Expire date: {{ $user['credit_card']['expiry_date'] }}</p>
+                                    <p>CVV: {{ $user['credit_card']['cvv'] }}</p>
+                                </td>
+                            </tr>
+                        @endforeach
+                            
                         </tbody>
                     </table>
                 

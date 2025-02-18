@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URL="http://cyber.blog:8000/careers" 
+URL="http://cyber.blog:8000/" 
 CONCURRENT_REQUESTS=5000
 BLOCKED_COUNT=0
 
