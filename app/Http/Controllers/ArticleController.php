@@ -8,6 +8,7 @@ use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Services\HtmlFilterService;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -42,7 +43,7 @@ class ArticleController extends Controller implements HasMiddleware
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, HtmlFilterService $htmlFilterService)
     {
         $request->validate([
             'title' => 'required|unique:articles|min:5',
@@ -53,10 +54,12 @@ class ArticleController extends Controller implements HasMiddleware
             'tags' => 'required'
         ]);
 
+        $sanitizedBody = $htmlFilterService->sanitize($request->body);
+
         $article = Article::create([
             'title' => $request->title,
             'subtitle' => $request->subtitle,
-            'body' => $request->body,
+            'body' => $sanitizedBody,
             'image' => $request->file('image')->store('public/images'),
             'category_id' => $request->category,
             'user_id' => Auth::user()->id,
@@ -109,7 +112,7 @@ class ArticleController extends Controller implements HasMiddleware
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, Article $article, HtmlFilterService $htmlFilterService)
     {
         $request->validate([
             'title' => 'required|min:5|unique:articles,title,' . $article->id,
@@ -120,10 +123,12 @@ class ArticleController extends Controller implements HasMiddleware
             'tags' => 'required'
         ]);
 
+        $sanitizedBody = $htmlFilterService->sanitize($request->body);
+
         $article->update([
             'title' => $request->title,
             'subtitle' => $request->subtitle,
-            'body' => $request->body,
+            'body' => $sanitizedBody,
             'category_id' => $request->category,
             'slug' => Str::slug($request->title),
         ]);
