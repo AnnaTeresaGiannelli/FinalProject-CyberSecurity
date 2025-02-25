@@ -1,4 +1,4 @@
-<div>
+<div class="py-5">
     <h3>Articles suggestions for you, get inspired!</h3>
     <form wire:submit="fetchNews">
         <label for="apiSelect">Breaking news aroud the world</label>
@@ -9,7 +9,7 @@
                 <option value="https://newsapi.org/v2/top-headlines?country=gb">NewsAPI - Uk</option>
                 <option value="https://newsapi.org/v2/top-headlines?country=us">NewsAPI - US</option>
             </select>
-            <button type="submit" class="btn btn-info">Go</button>
+            <button type="submit" class="btn btn-dark ms-2">Go</button>
         </div>
     </form>
     <div>

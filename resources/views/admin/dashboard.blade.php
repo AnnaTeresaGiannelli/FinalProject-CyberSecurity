@@ -1,8 +1,8 @@
 <x-layout>
-    <div class="container-fluid p-5 bg-secondary-subtle text-center">
+    <div class="container-fluid p-4 bg-secondary-subtle text-center">
         <div class="row justify-content-center">
             <div class="col-12">
-                <h1 class="display-1">Welcome back, admin: {{Auth::user()->name}}</h1>
+                <h1 class="display-4">Welcome back, admin: <br> {{Auth::user()->name}}</h1>
             </div>
         </div>
     </div>

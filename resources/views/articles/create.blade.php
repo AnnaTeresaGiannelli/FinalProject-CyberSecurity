@@ -54,7 +54,7 @@
                         @enderror
                     </div>
                     <div class="mt-3 d-flex justify-content-center flex-column align-items-center">
-                        <button type="submit" class="btn btn-outline-secondary">Complete</button>
+                        <button type="submit" class="btn btn-outline-dark">Complete</button>
                         <a href="{{route('homepage')}}" class="text-secondary mt-2">Back to home</a>
                     </div>
                 </form>

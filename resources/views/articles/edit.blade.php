@@ -1,8 +1,8 @@
 <x-layout>
-    <div class="container-fluid p-5 bg-secondary-subtle text-center">
+    <div class="container-fluid p-4 bg-secondary-subtle text-center">
         <div class="row justify-content-center">
             <div class="col-12">
-                <h1 class="display-1">Edit article</h1>
+                <h1 class="display-2">Edit article</h1>
             </div>
         </div>
     </div>
@@ -65,7 +65,7 @@
                         @enderror
                     </div>
                     <div class="mt-3 d-flex justify-content-center flex-column align-items-center">
-                        <button type="submit" class="btn btn-outline-secondary">Edit</button>
+                        <button type="submit" class="btn btn-outline-dark">Edit</button>
                         <a href="{{route('homepage')}}" class="text-secondary mt-2">Back to home</a>
                     </div>
                 </form>

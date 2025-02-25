@@ -1,8 +1,8 @@
 <x-layout>
-    <div class="container-fluid p-5 bg-secondary-subtle text-center">
+    <div class="container-fluid p-4 bg-secondary-subtle text-center">
         <div class="row justify-content-center">
             <div class="col-12">
-                <h1 class="display-1">Sign Up</h1>
+                <h1 class="display-2">Sign Up</h1>
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="mt-3 d-flex justify-content-center flex-column align-items-center">
                         <button type="submit" class="btn btn-outline-secondary">Sign Up</button>
-                        <p class="mt-2">Do you already have an account? <a href="{{route('login')}}" class="text-secondary">Please log in</a></p>
+                        <p class="mt-3">Do you already have an account? <a href="{{route('login')}}" class="text-secondary">Please log in</a></p>
                     </div>
                 </form>
             </div>
