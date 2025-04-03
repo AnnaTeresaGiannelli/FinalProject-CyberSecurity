@@ -87,7 +87,7 @@ class ArticleController extends Controller implements HasMiddleware
             'timestamp' => now(),
         ]);
 
-        return redirect(route('homepage'))->with('message', 'Articolo creato con successo');
+        return redirect(route('homepage'))->with('message', 'Article created successfully! You can find it in Pending Articles on your panel.');
     }
 
     /**
@@ -104,7 +104,7 @@ class ArticleController extends Controller implements HasMiddleware
     public function edit(Article $article)
     {
         if(Auth::user()->id != $article->user_id){
-            return redirect()->route('homepage')->with('alert', 'Accesso non consentito');
+            return redirect()->route('homepage')->with('alert', 'Not Authorized.');
         }
         return view('articles.edit', compact('article'));
     }
@@ -130,6 +130,8 @@ class ArticleController extends Controller implements HasMiddleware
             'subtitle' => $request->subtitle,
             'body' => $sanitizedBody,
             'category_id' => $request->category,
+            'user_id' => Auth::user()->id,
+            'is_accepted' => null,
             'slug' => Str::slug($request->title),
         ]);
 
@@ -164,7 +166,9 @@ class ArticleController extends Controller implements HasMiddleware
             'timestamp' => now(),
         ]);
 
-        return redirect(route('writer.dashboard'))->with('message', 'Articolo modificato con successo');
+        $article->sendToRevision();
+
+        return redirect(route('writer.dashboard'))->with('message', 'Article successfully updated.');
     }
 
     /**
@@ -185,7 +189,7 @@ class ArticleController extends Controller implements HasMiddleware
             'timestamp' => now(),
         ]);
         
-        return redirect()->back()->with('message', 'Articolo cancellato con successo');
+        return redirect()->back()->with('message', 'Article successfully deleted.');
     }
 
     public function byCategory(Category $category){

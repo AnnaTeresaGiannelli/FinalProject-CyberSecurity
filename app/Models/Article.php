@@ -47,4 +47,9 @@ class Article extends Model
         $minutesToRead = round($totalWords / 200);
         return intval($minutesToRead);
     }
+
+    public function sendToRevision(){
+        $this->is_accepted = null;
+        $this->save();
+    }
 }

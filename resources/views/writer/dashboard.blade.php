@@ -10,7 +10,7 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <h2>Pending articles</h2>
-                <x-writer-articles-table :articles="$unrevisionedArticles"/>
+                <x-writer-articles-table :articles="$unrevisionedArticles" status="pending"/>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <h2>Published articles</h2>
-                <x-writer-articles-table :articles="$acceptedArticles"/>
+                <x-writer-articles-table :articles="$acceptedArticles" status="accepted"/>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <h2>Rejected articles</h2>
-                <x-writer-articles-table :articles="$rejectedArticles"/>
+                <x-writer-articles-table :articles="$rejectedArticles" status="rejected"/>
             </div>
         </div>
     </div>

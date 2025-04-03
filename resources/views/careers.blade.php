@@ -52,9 +52,9 @@
                 <h2>Work as administrator</h2>
                 <p>If you choose to be administrator you'll be part of our board, managing every aspect of our business. High responsability!</p>
                 <h2>Work as revisor</h2>
-                <p>f you choose to be revisor you'll be able to get an extra money helping us to care our community, reviewing articles.</p>
+                <p>If you choose to be revisor you'll be able to get an extra money helping us to care our community, reviewing articles.</p>
                 <h2>Work as writer</h2>
-                <p>f you choose to be writer you can unleash your potential and be one of the best writer of our community.</p>
+                <p>If you choose to be writer you can unleash your potential and be one of the best writer of our community.</p>
             </div>
         </div>
     </div>

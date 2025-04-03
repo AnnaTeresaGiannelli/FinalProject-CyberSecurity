@@ -1,13 +1,13 @@
 <table class="table table-striped table-hover">
     <thead class="table-dark">
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Subtitle</th>
-            <th scope="col">Category</th>
-            <th scope="col">Tags</th>
-            <th scope="col">Created at</th>
-            <th scope="col">Actions</th>
+            <th scope="col" style="width: 5%;">#</th>
+            <th scope="col" style="width: 20%;">Title</th>
+            <th scope="col" style="width: 25%;">Subtitle</th>
+            <th scope="col" style="width: 15%;">Category</th>
+            <th scope="col" style="width: 10%;">Tags</th>
+            <th scope="col" style="width: 10%;">Created at</th>
+            <th scope="col" style="width: 15%;">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -24,12 +24,18 @@
                 </td>
                 <td>{{$article->created_at->format('d/m/Y')}}</td>
                 <td>
-                    <a href="{{route('articles.show', $article)}}" class="btn btn-secondary">Read</a>
-                    <a href="{{route('articles.edit', $article)}}" class="btn btn-warning text-white">Edit</a>
+                    <a href="{{route('articles.show', $article)}}" class="btn btn-dark">Read</a>
+
+                    @if ($status !== 'rejected') 
+                        <a href="{{route('articles.edit', $article)}}" class="btn btn-warning text-white mt-1 mt-lg-0">
+                            <i class="bi bi-pen"></i>
+                        </a>
+                    @endif
+
                     <form action="{{route('articles.destroy', $article)}}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger mt-1 mt-lg-0"><i class="bi bi-trash"></i></button>
                     </form>
                 </td>
             </tr>

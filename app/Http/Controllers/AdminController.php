@@ -99,6 +99,23 @@ class AdminController extends Controller
         return redirect(route('admin.dashboard'))->with('message', "$user->name is now writer");
     }
 
+    public function rejectRequest(User $user, $role)
+    {
+        if ($role == 'admin') {
+            $user->is_admin = 0;
+        } elseif ($role == 'revisor') {
+            $user->is_revisor = 0; 
+        } elseif ($role == 'writer') {
+            $user->is_writer = 0;
+        } else {
+            return redirect()->back()->with('error', 'Invalid role.');
+        }
+    
+        $user->save();
+    
+        return redirect()->back()->with('message', ucfirst($role) . ' request rejected successfully.');
+    }
+
     public function editTag(Request $request, Tag $tag){
         $request->validate([
             'name' => 'required|unique:tags',

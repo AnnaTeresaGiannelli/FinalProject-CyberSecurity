@@ -1,11 +1,11 @@
 <table class="table table-striped table-hover">
     <thead class="table-dark">
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Subtitle</th>
-            <th scope="col">Author</th>
-            <th scope="col">Actions</th>
+            <th scope="col" style="width: 5%;">#</th>
+            <th scope="col" style="width: 25%;">Title</th>
+            <th scope="col" style="width: 35%;">Subtitle</th>
+            <th scope="col" style="width: 20%;">Author</th>
+            <th scope="col" style="width: 15%; padding-left: 40px;">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -17,11 +17,11 @@
                 <td>{{$article->user->name}}</td>
                 <td>
                     @if (is_null($article->is_accepted))
-                        <a href="{{route('articles.show', $article)}}" class="btn btn-secondary">Read</a>
+                        <a href="{{route('articles.show', $article)}}" class="btn btn-dark ms-3 px-4">Read</a>
                     @else
                         <form action="{{route('revisor.undoArticle', $article)}}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-secondary">Back to review</button>
+                            <button type="submit" class="btn btn-dark">Back to review</button>
                         </form>
                     @endif
                 </td>

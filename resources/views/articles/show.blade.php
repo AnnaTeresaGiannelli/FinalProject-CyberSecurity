@@ -10,7 +10,7 @@
     <div class="container my-5">
         <div class="row justify-content-center">
 
-            <div class="col-12 col-lg-4 mb-4 mb-md-0">
+            <div class="col-12 col-md-4 mb-4 mb-md-0">
                 <img src="{{ Storage::url($article->image) }}" class="img-fluid rounded-3 shadow-lg" alt="Immagine dell'articolo: {{ $article->title }}">
             </div>
 
@@ -34,7 +34,7 @@
                         </p>
                     </div>
                     <hr class="my-4 mx-4">
-                    <p class="lead">{!! $article->body !!}</p>
+                    <p class="lead">{!! html_entity_decode($article->body) !!}</p>
                 </div>
 
                 <!-- revisor -->
@@ -50,6 +50,25 @@
                                 @csrf
                                 <button type="submit" class="btn btn-success rounded-pill px-4 py-2 shadow-sm">Accept</button>
                             </form>
+                        </div>
+                    </div>
+                </div>
+                @endif
+
+                <!-- writer -->
+                @if (Auth::user() && Auth::user()->is_writer && Auth::user()->id == $article->user_id)
+                <div class="container my-5">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-evenly">
+                            <form action="{{route('articles.destroy', $article)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger rounded-pill px-4 py-2 shadow-sm"><i class="bi bi-trash"></i> Delete</button>
+                            </form>
+                            @if ($article->is_accepted !== 0)
+                            <a href="{{route('articles.edit', $article)}}" class="btn btn-warning text-white rounded-pill px-4 py-2 shadow-sm"><i class="bi bi-pen"></i> Edit</a>
+                            @endif
+                            
                         </div>
                     </div>
                 </div>

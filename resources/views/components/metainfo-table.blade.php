@@ -12,15 +12,15 @@
         @foreach ($metaInfos as $metaInfo)
             <tr>
                 <th scope="row">{{$metaInfo->id}}</th>
-                <td>{{$metaInfo->name}}</td>
+                <td>{{ucfirst($metaInfo->name)}}</td>
                 <td>{{count($metaInfo->articles)}}</td>
                 @if ($metaType == 'tags')
                     <td>
                         <form action="{{route('admin.editTag', ['tag' => $metaInfo])}}" method="POST">
                             @csrf
                             @method('PUT')
-                            <input type="text" value="{{$metaInfo->name}}" name="name" placeholder="Nuovo nome tag" class="form-control w-50 d-inline">
-                            <button type="submit" class="btn btn-secondary">Modifica</button>
+                            <input type="text" value="{{ucfirst($metaInfo->name)}}" name="name" placeholder="Nuovo nome tag" class="form-control w-50 d-inline">
+                            <button type="submit" class="btn btn-secondary">Update</button>
                         </form>
                     </td>
                     <td>
@@ -35,7 +35,7 @@
                         <form action="{{route('admin.editCategory', ['category' => $metaInfo])}}" method="POST">
                             @csrf
                             @method('PUT')
-                            <input type="text" value="{{$metaInfo->name}}" name="name" placeholder="Nuovo nome categoria" class="form-control w-50 d-inline">
+                            <input type="text" value="{{ucfirst($metaInfo->name)}}" name="name" placeholder="Nuovo nome categoria" class="form-control w-50 d-inline">
                             <button type="submit" class="btn btn-secondary">Update</button>
                         </form>
                     </td>
